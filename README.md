@@ -23,23 +23,41 @@ The project was developed using Node.js and TypeScript, incorporating several li
 
 <br/>
 
-> Now, follow these steps in the terminal of your code editor:
+> Clone my Git project using the terminal in your code editor:
 
 ```
 
-1. git clone https://github.com/Leozhr/Desafio-DevProgram.git
+git clone https://github.com/Leozhr/Desafio-DevProgram.git
 
 ```
 
-```
+<br/>
 
-2. npm install
-
-```
+> Navigate to the folder where the Git project was allocated:
 
 ```
 
-3. npm start
+cd Desafio-DevProgram
+
+```
+
+<br/>
+
+> Install the project dependencies (ensure that Node is installed):
+
+```
+
+npm install
+
+```
+
+<br/>
+
+> Now, run the command below whenever you want to execute the project:
+
+```
+
+npm start
 
 ```
 
