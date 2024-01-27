@@ -1,0 +1,24 @@
+{
+  "name": "desafio-leonardoleal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.7",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@types/ora": "^3.2.0",
+    "dotenv": "^16.4.1",
+    "googleapis": "^131.0.0",
+    "ora": "^8.0.1",
+    "tsx": "^4.7.0"
+  }
+}

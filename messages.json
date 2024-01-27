@@ -1,0 +1,8 @@
+{
+  "loadingStudentResults": "Loading student results...",
+  "errorLoadingStudents": "Error loading the students!",
+  "studentsLoadedSuccessfully": "Students loaded successfully!",
+  "settingStudentSituations": "Setting student situations...",
+  "errorSettingStudentSituations": "Error setting the student situations!",
+  "studentsSettingSuccessfully": "Students setting successfully!"
+}
