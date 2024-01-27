@@ -5,7 +5,7 @@ import getStudentStatus from "../utils/GetStudentStatus";
 interface Student {
   spreadsheetId: string | undefined;
   spreadsheetPage: string | undefined;
-  getStudentResults: number[][] | null | undefined;
+  getStudentResults: number[][] | undefined;
 }
 
 // Asynchronous function to set the situation for each student
@@ -26,36 +26,37 @@ async function setStudentSituation({ spreadsheetId, spreadsheetPage, getStudentR
       range: `${spreadsheetPage}!H4:H`,
     });
 
-    // Initialize the row index to 4
-    let rowIndex = 4;
-
-    // Loop over each student's results
-    for (const student of getStudentResults!) {
-      // Destructure the average and absences from the student's results
+    // If there are no student results, return false
+    if (!getStudentResults) return false;
+    
+    const formattedResults = getStudentResults.map((student) => {
+      // Destructure the average and absences from the student array
       const [average, absences] = student;
 
-      // Get the situation and naf for the student
+      // Get the student status based on their average and absences
       const { situation, naf } = getStudentStatus({ average, absences });
 
-      // Append the situation and naf to the Google Sheet
-      await googleSheets.spreadsheets.values.append({
-        spreadsheetId,
-        range: `${spreadsheetPage}!G${rowIndex}:H${rowIndex}`,
-        valueInputOption: 'USER_ENTERED',
-        requestBody: {
-          values: [
-            [situation, naf]
-          ]
-        }
-      });
+      // Return the situation and naf in an array
+      return [situation, naf];
+    })
 
-      // Increment the row index for the next student
-      rowIndex++;
-    }
+    // If there are no formatted results, return false
+    if (!formattedResults) return false;
+
+    // Append the formatted results to the Google Sheet
+    await googleSheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: `${spreadsheetPage}!G4:H4`,
+      valueInputOption: 'USER_ENTERED',
+      requestBody: {
+        values: [...formattedResults]
+      }
+    });
 
     return true;
   } catch (error) {
-    console.error('Error setting student situations:');
+    // Log any errors that occur during the execution
+    console.error(error);
   }
 }
 

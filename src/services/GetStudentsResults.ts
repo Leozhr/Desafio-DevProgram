@@ -56,6 +56,7 @@ async function getStudentResult({ spreadsheetId, spreadsheetPage }: Student) {
     // Return the results
     return studentsResults;
   } catch (error) {
+    // Log any errors that occur during the execution
     console.log(error);
   }
 }
